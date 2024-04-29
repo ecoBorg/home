@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html data-bs-theme="auto" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ecoBorg</title>
+    <meta name="twitter:title" content="ecoBorg">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/img/logos/ecoBorg_social_dark2.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <script>
+        (function() {
+
+            // JavaScript snippet handling Dark/Light mode switching
+
+            const getStoredTheme = () => localStorage.getItem('theme');
+            const setStoredTheme = theme => localStorage.setItem('theme', theme);
+            const forcedTheme = document.documentElement.getAttribute('data-bss-forced-theme');
+
+            const getPreferredTheme = () => {
+
+                if (forcedTheme) return forcedTheme;
+
+                const storedTheme = getStoredTheme();
+                if (storedTheme) {
+                    return storedTheme;
+                }
+
+                const pageTheme = document.documentElement.getAttribute('data-bs-theme');
+
+                if (pageTheme) {
+                    return pageTheme;
+                }
+
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            const setTheme = theme => {
+                if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-bs-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-bs-theme', theme);
+                }
+            }
+
+            setTheme(getPreferredTheme());
+
+            const showActiveTheme = (theme, focus = false) => {
+                const themeSwitchers = [].slice.call(document.querySelectorAll('.theme-switcher'));
+
+                if (!themeSwitchers.length) return;
+
+                document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                    element.classList.remove('active');
+                    element.setAttribute('aria-pressed', 'false');
+                });
+
+                for (const themeSwitcher of themeSwitchers) {
+
+                    const btnToActivate = themeSwitcher.querySelector('[data-bs-theme-value="' + theme + '"]');
+
+                    if (btnToActivate) {
+                        btnToActivate.classList.add('active');
+                        btnToActivate.setAttribute('aria-pressed', 'true');
+                    }
+                }
+            }
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                const storedTheme = getStoredTheme();
+                if (storedTheme !== 'light' && storedTheme !== 'dark') {
+                    setTheme(getPreferredTheme());
+                }
+            });
+
+            window.addEventListener('DOMContentLoaded', () => {
+                showActiveTheme(getPreferredTheme());
+
+                document.querySelectorAll('[data-bs-theme-value]')
+                    .forEach(toggle => {
+                        toggle.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const theme = toggle.getAttribute('data-bs-theme-value');
+                            setStoredTheme(theme);
+                            setTheme(theme);
+                            showActiveTheme(theme);
+                        })
+                    })
+            });
+        })();
+    </script>
+    <link rel="icon" type="image/svg+xml" sizes="150x150" href="assets/img/ecoBorg_icon_light.svg">
+    <link rel="icon" type="image/svg+xml" sizes="150x150" href="assets/img/ecoBorg_icon_dark.svg" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/svg+xml" sizes="150x150" href="assets/img/ecoBorg_icon_light.svg">
+    <link rel="icon" type="image/svg+xml" sizes="150x150" href="assets/img/ecoBorg_icon_dark.svg" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+</head>
+
+<body>
+    <!-- Start: Navbar Right Links -->
+    <nav class="navbar navbar-expand-md sticky-top py-3" style="background: #223843;font-family: 'Radis Sans';" data-bs-theme="dark">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="../index.html"><span class="d-none d-print-block d-sm-block d-md-block d-lg-block d-xl-block d-xxl-block"><img src="assets/img/logos/light/ecoBorg_fullsize_multi.svg" width="60%"></span><span class="d-block d-print-block d-sm-none d-md-none d-lg-none d-xl-none d-xxl-none"><img src="assets/img/logos/light/ecoBorg_fullsize_multi.svg" width="120px"></span></a><button data-bs-toggle="collapse" class="navbar-toggler text-primary" data-bs-target="#navcol-2" style="border-color: var(--bs-primary);"><span class="text-primary visually-hidden">Toggle navigation</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-menu-2">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M4 6l16 0"></path>
+                    <path d="M4 12l16 0"></path>
+                    <path d="M4 18l16 0"></path>
+                </svg></button>
+            <div class="collapse navbar-collapse text-light" id="navcol-2">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="../index.html">home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../about.html">about</a></li>
+                </ul><a class="btn btn-primary ms-md-2" role="button" href="#" data-bs-target="#modal-1" data-bs-toggle="modal">hire us</a>
+            </div>
+        </div>
+    </nav><!-- End: Navbar Right Links -->
+    <!-- Start: Hero Parallax -->
+    <section>
+        <!-- Start: Parallax Background -->
+        <div style="height: 600px;background: url(&quot;assets/img/daniel-garza-Xn0-lgnxEAY-unsplash.jpg&quot;) right / cover;">
+            <div class="container h-100">
+                <div class="row h-100">
+                    <div class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
+                        <div class="text-light" style="max-width: 350px;">
+                            <h1 class="fw-bold" style="font-family: 'Radis Sans';text-shadow: 0px 0px 7px var(--bs-dark);">about</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End: Parallax Background -->
+    </section><!-- End: Hero Parallax -->
+    <!-- Start: Hero Banner -->
+    <section class="py-4 py-xl-5">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-md-10 col-xl-8 text-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center mx-auto justify-content-md-start align-items-md-center justify-content-xl-center">
+                    <div>
+                        <p class="mb-4">Launched by Jacob Borg, ecoBorg is a eco-friendly design studio that prioritizes&nbsp; quality, affordability, and environmental impact.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End: Hero Banner -->
+    <!-- Start: Hero Clean -->
+    <div class="container py-4 py-xl-5">
+        <div class="row gy-4 gy-md-0">
+            <div class="col-md-6">
+                <div class="p-xl-5 m-xl-5"><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="assets/img/graindrawing1.png"></div>
+            </div>
+            <div class="col-md-6 d-md-flex align-items-md-center">
+                <div style="max-width: 350px;">
+                    <h2 class="text-lowercase fw-bold" style="font-family: 'Radis Sans';">Origins</h2>
+                    <p class="my-3">Jake was originally hesitant to create a studio, but his friends insisted. So he gave into their demands, and launched a Christian, eco-friendly design studio.</p>
+                </div>
+            </div>
+        </div>
+    </div><!-- End: Hero Clean -->
+    <!-- Start: Features Centered Icons -->
+    <div class="container py-4 py-xl-5">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2 style="font-family: 'Radis Sans';">values</h2>
+                <p class="w-lg-50">Created with a purpose, for a purpose.</p>
+            </div>
+        </div>
+        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3 d-md-flex justify-content-md-center">
+            <div class="col">
+                <div class="text-center d-flex flex-column align-items-center align-items-xl-center">
+                    <div class="bs-icon-lg bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-plant">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M7 15h10v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2v-4z"></path>
+                            <path d="M12 9a6 6 0 0 0 -6 -6h-3v2a6 6 0 0 0 6 6h3"></path>
+                            <path d="M12 11a6 6 0 0 1 6 -6h3v1a6 6 0 0 1 -6 6h-3"></path>
+                            <path d="M12 15l0 -6"></path>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4 style="font-family: 'Radis Sans';">stewardship</h4>
+                        <p>As dictated in Genesis 1:26, we have a duty to tend to His Creation. For us, that looks like reducing our waste, using renewable energy, and leaving everywhere we go cleaner than how we found it.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-center d-flex flex-column align-items-center align-items-xl-center">
+                    <div class="bs-icon-lg bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-bible">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M19 4v16h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12z"></path>
+                            <path d="M19 16h-12a2 2 0 0 0 -2 2"></path>
+                            <path d="M12 7v6"></path>
+                            <path d="M10 9h4"></path>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4 style="font-family: 'Radis Sans';">faith</h4>
+                        <p>Our Christian faith is the foundation of our entire business. We strive to make the world a better place by serving Him, sharing the Gospel, and tending to the Earth.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-center d-flex flex-column align-items-center align-items-xl-center">
+                    <div class="bs-icon-lg bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-settings">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"></path>
+                            <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+                        </svg></div>
+                    <div class="px-3">
+                        <h4 style="font-family: 'Radis Sans';">innovation</h4>
+                        <p>We strive to innovate and create in everything we do. Wether it is a new website, print ad, or even new technology, we always are looking to innovate and create.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End: Features Centered Icons -->
+    <!-- Start: Footer Basic -->
+    <footer class="text-center" style="background: var(--bs-primary);">
+        <div class="container text-muted py-4 py-lg-5">
+            <ul class="list-inline" style="font-family: 'Radis Sans';">
+                <li class="list-inline-item me-4"><a class="btn btn-primary" role="button" href="../index.html">home</a></li>
+                <li class="list-inline-item me-4"><a class="btn btn-primary" role="button" data-bs-target="#modal-1" data-bs-toggle="modal">hire us</a></li>
+                <li class="list-inline-item me-4"><a class="btn btn-primary" role="button" data-bs-target="#modal-2" data-bs-toggle="modal">contact</a></li>
+                <li class="list-inline-item"><a class="link-secondary" href="#"></a><a class="btn btn-primary" role="button" href="../privacy.html">privacy</a></li>
+            </ul>
+            <ul class="list-inline" style="font-size: 24pt;">
+                <li class="list-inline-item me-4"><a href="#" target="_blank" style="color: var(--bs-dark);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-brand-instagram">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
+                            <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                            <path d="M16.5 7.5l0 .01"></path>
+                        </svg></a></li>
+                <li class="list-inline-item me-4"><a href="#" target="_blank" style="color: var(--bs-dark);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-brand-x">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                        </svg></a></li>
+                <li class="list-inline-item"><a href="https://github.com/ecoBorg" target="_blank" style="color: var(--bs-dark);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-brand-github">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+                        </svg></a></li>
+            </ul>
+            <p class="mb-0">Copyright © 2024 Jacob Borg</p>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="font-family: 'Radis Sans';">
+                        <h4 class="modal-title">hire us</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body" style="text-align: center;">
+                        <form data-bss-recipient="42d87927559992ea3a5a54c5a9688bcc" data-bss-redirect-url="index.html" data-bss-subject="ecoBorg Contact"><input class="form-control" type="text" name="name*" placeholder="name" required="" style="width: 100%;"><input class="form-control" type="email" style="width: 100%;margin-top: 15px;" name="email*" placeholder="email" required=""><textarea class="form-control" style="width: 200%;margin-top: 15px;" name="message" placeholder="project brief*" required=""></textarea>
+                            <p style="margin-top: 15px;">Project type*</p><select class="form-select" style="width: 100%;" required="">
+                                <optgroup label="Project type">
+                                    <option value="12" selected="">marketing</option>
+                                    <option value="13">website</option>
+                                    <option value="14">branding</option>
+                                    <option value="14" selected="">other</option>
+                                </optgroup>
+                            </select>
+                            <p style="margin-top: 15px;">Project start date*</p><input class="form-control" type="date" name="start" style="width: 100%;" required="">
+                            <p style="margin-top: 15px;">Project end date*</p><input class="form-control" type="date" name="end" style="width: 100%;" required="">
+                            <p style="margin-top: 15px;">Budget</p><input class="form-control" type="number" style="width: 100%;" name="budget" placeholder="$500">
+                            <p style="margin-top: 15px;">*Required content</p>
+                        </form><button class="btn btn-outline-dark" type="submit" style="margin-top: 15px;min-width: 100%;font-family: 'Radis Sans';">send</button>
+                    </div>
+                    <div class="modal-footer" style="font-family: 'Radis Sans';"><button class="btn btn-light" type="button" data-bs-dismiss="modal">close</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="modal-2">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="font-family: 'Radis Sans';">
+                        <h4 class="modal-title">contact us</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body" style="text-align: center;">
+                        <form data-bss-recipient="42d87927559992ea3a5a54c5a9688bcc" data-bss-redirect-url="index.html" data-bss-subject="ecoBorg Contact"><input class="form-control" type="text" name="name" placeholder="name" required="" style="width: 100%;"><input class="form-control" type="email" style="width: 100%;margin-top: 15px;" name="email" placeholder="email" required=""><textarea class="form-control" style="width: 200%;margin-top: 15px;" name="message" placeholder="message" required=""></textarea></form><button class="btn btn-outline-dark" type="submit" style="margin-top: 15px;min-width: 100%;font-family: 'Radis Sans';">send</button>
+                    </div>
+                    <div class="modal-footer" style="font-family: 'Radis Sans';"><button class="btn btn-light" type="button" data-bs-dismiss="modal">close</button></div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End: Footer Basic -->
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.min.js"></script>
+</body>
+
+</html>
